@@ -1,6 +1,15 @@
 {
-    "type": "grayscale",
+    "type": "rgb",
     "colors": {
-        "wire": 7
+        "wire": [
+            128,
+            64,
+            128
+        ],
+        "Bicycle": [
+            119,
+            11,
+            32
+        ]
     }
 }
