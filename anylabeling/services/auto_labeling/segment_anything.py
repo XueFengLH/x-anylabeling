@@ -140,17 +140,27 @@ class SegmentAnything(Model):
             contours1[i] = contour11.reshape(-1,2)
             max_indices_0 = np.argmax(contours1[i], axis=0)
             max_c.append(max_indices_0[1])
+        # print("--------------------------------------------------------------------")
         for i,xx1 in enumerate(xxxx1[0]):
             if xx1[3] != -1:
                 distances = np.linalg.norm(contours1[xx1[3]]-contours1[i][max_c[i]], axis=1)
                 # 找到距离最近点的索引
                 nearest_index = np.argmin(distances)
+                # print("***************************************")
+                # print("f")
+                # print(contours1[xx1[3]][nearest_index])
+                # print(contours1[xx1[3]][0])
+                # print(contours1[xx1[3]][-1])
+                # print("z")
+                # print(contours1[i][max_c[i]])
+                # print(contours1[i][0])
+                # print(contours1[i][-1])
                 # print(contours1[xx1[3]][nearest_index])
                 subarrays_f = np.split(contours1[xx1[3]], [nearest_index])
                 subarrays_z = np.split(contours1[i], [max_c[i]])
                 # for j,z in enumerate(subarrays_z):
                 #     subarrays_z[j] = np.flipud(z)
-                result = np.concatenate((subarrays_z[0], subarrays_z[1],subarrays_f[0],subarrays_f[1]), axis=0)
+                result = np.concatenate((subarrays_z[1], subarrays_z[0],subarrays_f[1],subarrays_f[0]), axis=0)
                 contours1[xx1[3]] = result
         contours11 = []
         for i,xx1 in enumerate(xxxx1[0]):
